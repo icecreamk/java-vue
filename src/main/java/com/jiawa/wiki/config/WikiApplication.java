@@ -10,7 +10,6 @@ import org.springframework.core.env.Environment;
 @ComponentScan("com.jiawa")
 @SpringBootApplication
 public class WikiApplication {
-
 	private static final Logger log = LoggerFactory.getLogger(WikiApplication.class);
 
 	public static void main(String[] args) {

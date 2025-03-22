@@ -1,6 +1,7 @@
 
 package com.jiawa.wiki.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,9 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestController {
+    @Value("${test.user:TEST_USER}")
+    private String testUser;
+
     @GetMapping("/hello")
     public String helloTest() {
-        return "Hello world";
+        return "Hello world" + testUser;
     }
 
     @PostMapping("/hello/post")
