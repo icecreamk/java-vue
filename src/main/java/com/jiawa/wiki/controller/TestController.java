@@ -15,7 +15,7 @@ public class TestController {
 
     @GetMapping("/hello")
     public String helloTest() {
-        return "Hello world" + testUser;
+        return "Hello World: " + testUser;
     }
 
     @PostMapping("/hello/post")
