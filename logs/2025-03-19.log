@@ -1,0 +1,22 @@
+2025-03-19 17:13:38.609 INFO  [][] [main] c.jiawa.wiki.WikiApplication:50 - Starting WikiApplication using Java 23.0.2 with PID 13651 (/Users/hollton/Documents/imoocBack/wiki/target/classes started by hollton in /Users/hollton/Documents/imoocBack/wiki)
+2025-03-19 17:13:38.610 INFO  [][] [main] c.jiawa.wiki.WikiApplication:654 - No active profile set, falling back to 1 default profile: "default"
+2025-03-19 17:13:38.994 INFO  [][] [main] c.jiawa.wiki.WikiApplication:56 - Started WikiApplication in 0.552 seconds (process running for 0.676)
+2025-03-19 17:18:07.441 INFO  [][] [main] c.jiawa.wiki.WikiApplication:50 - Starting WikiApplication using Java 23.0.2 with PID 13804 (/Users/hollton/Documents/imoocBack/wiki/target/classes started by hollton in /Users/hollton/Documents/imoocBack/wiki)
+2025-03-19 17:18:07.442 INFO  [][] [main] c.jiawa.wiki.WikiApplication:654 - No active profile set, falling back to 1 default profile: "default"
+2025-03-19 17:18:07.811 INFO  [][] [main] c.jiawa.wiki.WikiApplication:56 - Started WikiApplication in 0.543 seconds (process running for 0.668)
+2025-03-19 17:18:07.812 INFO  [][] [main] c.jiawa.wiki.WikiApplication:16 - hello world
+2025-03-19 17:22:56.974 INFO  [][] [main] c.jiawa.wiki.WikiApplication:50 - Starting WikiApplication using Java 23.0.2 with PID 13948 (/Users/hollton/Documents/imoocBack/wiki/target/classes started by hollton in /Users/hollton/Documents/imoocBack/wiki)
+2025-03-19 17:22:56.975 INFO  [][] [main] c.jiawa.wiki.WikiApplication:654 - No active profile set, falling back to 1 default profile: "default"
+2025-03-19 17:22:57.373 INFO  [][] [main] c.jiawa.wiki.WikiApplication:56 - Started WikiApplication in 0.57 seconds (process running for 0.691)
+2025-03-19 17:22:57.373 INFO  [][] [main] c.jiawa.wiki.WikiApplication:17 - hello world
+2025-03-19 17:22:57.374 INFO  [][] [main] c.jiawa.wiki.WikiApplication:18 - 地址: 	http://127.0.0.1:null
+2025-03-19 17:25:33.618 INFO  [][] [main] c.jiawa.wiki.WikiApplication:50 - Starting WikiApplication using Java 23.0.2 with PID 14010 (/Users/hollton/Documents/imoocBack/wiki/target/classes started by hollton in /Users/hollton/Documents/imoocBack/wiki)
+2025-03-19 17:25:33.618 INFO  [][] [main] c.jiawa.wiki.WikiApplication:654 - No active profile set, falling back to 1 default profile: "default"
+2025-03-19 17:25:34.025 INFO  [][] [main] c.jiawa.wiki.WikiApplication:56 - Started WikiApplication in 0.587 seconds (process running for 0.72)
+2025-03-19 17:25:34.026 INFO  [][] [main] c.jiawa.wiki.WikiApplication:17 - hello world
+2025-03-19 17:25:34.026 INFO  [][] [main] c.jiawa.wiki.WikiApplication:18 - 地址: 	http://127.0.0.1:null
+2025-03-19 17:25:58.487 INFO  [][] [main] c.jiawa.wiki.WikiApplication:50 - Starting WikiApplication using Java 23.0.2 with PID 14029 (/Users/hollton/Documents/imoocBack/wiki/target/classes started by hollton in /Users/hollton/Documents/imoocBack/wiki)
+2025-03-19 17:25:58.488 INFO  [][] [main] c.jiawa.wiki.WikiApplication:654 - No active profile set, falling back to 1 default profile: "default"
+2025-03-19 17:25:58.886 INFO  [][] [main] c.jiawa.wiki.WikiApplication:56 - Started WikiApplication in 0.574 seconds (process running for 0.698)
+2025-03-19 17:25:58.886 INFO  [][] [main] c.jiawa.wiki.WikiApplication:17 - hello world
+2025-03-19 17:25:58.887 INFO  [][] [main] c.jiawa.wiki.WikiApplication:18 - 地址: 	http://127.0.0.1:null
