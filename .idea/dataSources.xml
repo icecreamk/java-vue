@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="wiki" uuid="19731988-3e38-43c2-829d-c32205eadd53">
+    <data-source source="LOCAL" name="mysql-wiki" uuid="38aaeaa7-4ef5-4c5e-96f4-2c6d320cc623">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
