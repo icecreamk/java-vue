@@ -25,3 +25,7 @@ Content-Type: application/json
 }
 
 ###
+
+DELETE http://localhost:8881/ebook/delete/561427531413196800
+
+###
