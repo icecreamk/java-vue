@@ -1,0 +1,30 @@
+
+GET http://localhost:8881/category/list?name=vue&size=2&page=1
+###
+
+POST http://localhost:8881/category/save
+Content-Type: application/json
+
+{
+  "id": 561450912720228352,
+  "parent": 200,
+  "name": "222",
+  "sort": 209
+}
+
+###
+
+POST http://localhost:8881/category/save
+Content-Type: application/json
+
+{
+  "parent": 200,
+  "name": "java23",
+  "sort": 209
+}
+
+###
+
+DELETE http://localhost:8881/category/delete/561450912720228352
+
+###
