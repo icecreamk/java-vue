@@ -1,4 +1,27 @@
-GET http://localhost:8881/ebook/list?name=java
+GET http://localhost:8881/ebook/list
 
 ###
 
+GET http://localhost:8881/ebook/list?name=vue&size=2&page=1
+###
+
+POST http://localhost:8881/ebook/save
+Content-Type: application/json
+
+{
+  "id": 1,
+  "description": "123",
+  "name": "java17"
+}
+
+###
+
+POST http://localhost:8881/ebook/save
+Content-Type: application/json
+
+{
+  "description": "123",
+  "name": "java23"
+}
+
+###
