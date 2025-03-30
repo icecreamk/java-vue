@@ -4,7 +4,6 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 
 public class PageReq {
-
     @NotNull(message = "【页码】不能为空")
     private int page;
 
@@ -30,7 +29,7 @@ public class PageReq {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("PageReq{");
+        final StringBuffer sb = new StringBuffer("PageReq{");
         sb.append("page=").append(page);
         sb.append(", size=").append(size);
         sb.append('}');
