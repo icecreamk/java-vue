@@ -1,11 +1,9 @@
 package com.jiawa.wiki.req;
 
-// TODO
-public class EbookQueryReq {
-//public class EbookQueryReq extends PageReq {
+public class EbookQueryReq extends PageReq {
     private Long id;
 
-    public String name;
+    private String name;
 
     private Long categoryId2;
 
