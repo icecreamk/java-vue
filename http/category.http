@@ -2,6 +2,9 @@
 GET http://localhost:8881/category/list?name=vue&size=2&page=1
 ###
 
+GET http://localhost:8881/category/all
+###
+
 POST http://localhost:8881/category/save
 Content-Type: application/json
 
