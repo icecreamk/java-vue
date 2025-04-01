@@ -30,7 +30,7 @@ public class DocService {
     @Resource
     private DocMapper docMapper;
 
-//    @Resource
+    //    @Resource
 //    private DocMapperCust docMapperCust;
 //
     @Resource
@@ -128,16 +128,16 @@ public class DocService {
         docMapper.deleteByExample(docExample);
     }
 
-//    public String findContent(Long id) {
-//        Content content = contentMapper.selectByPrimaryKey(id);
-//        // 文档阅读数+1
+    public String findContent(Long id) {
+        Content content = contentMapper.selectByPrimaryKey(id);
+        // 文档阅读数+1
 //        docMapperCust.increaseViewCount(id);
-//        if (ObjectUtils.isEmpty(content)) {
-//            return "";
-//        } else {
-//            return content.getContent();
-//        }
-//    }
+        if (ObjectUtils.isEmpty(content)) {
+            return "";
+        } else {
+            return content.getContent();
+        }
+    }
 
     /**
      * 点赞

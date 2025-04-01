@@ -35,3 +35,7 @@ Content-Type: application/json
 DELETE http://localhost:8881/doc/delete/562181389617860608
 
 ###
+
+
+GET http://localhost:8881/doc/find-content/999
+###
