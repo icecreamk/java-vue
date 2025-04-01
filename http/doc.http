@@ -1,0 +1,36 @@
+
+GET http://localhost:8881/doc/list?page=1&size=10
+###
+
+GET http://localhost:8881/doc/all/1
+###
+
+POST http://localhost:8881/doc/save
+Content-Type: application/json
+
+{
+  "parent": 0,
+  "ebookId": 1,
+  "name": "222",
+  "sort": 209
+}
+
+###
+
+POST http://localhost:8881/doc/save
+Content-Type: application/json
+
+{
+  "id": 562181389617860608,
+  "parent": 0,
+  "ebookId": 1,
+  "name": "2222333",
+  "content": "123",
+  "sort": 209
+}
+
+###
+
+DELETE http://localhost:8881/doc/delete/562181389617860608
+
+###
