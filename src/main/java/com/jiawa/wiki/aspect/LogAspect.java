@@ -2,6 +2,12 @@ package com.jiawa.wiki.aspect;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.support.spring.PropertyPreFilters;
+import com.jiawa.wiki.util.RequestContext;
+import com.jiawa.wiki.util.SnowFlake;
+import jakarta.annotation.Resource;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -15,11 +21,12 @@ import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
 import org.springframework.web.multipart.MultipartFile;
+
+//import javax.annotation.Resource;
+//import javax.servlet.ServletRequest;
+//import javax.servlet.ServletResponse;
+//import javax.servlet.http.HttpServletRequest;
 
 @Aspect
 @Component
@@ -27,22 +34,24 @@ public class LogAspect {
 
     private final static Logger LOG = LoggerFactory.getLogger(LogAspect.class);
 
-    /** 定义一个切点 */
+    /**
+     * 定义一个切点
+     */
     @Pointcut("execution(public * com.jiawa.*.controller..*Controller.*(..))")
-    public void controllerPointcut() {}
+    public void controllerPointcut() {
+    }
+
+    @Resource
+    private SnowFlake snowFlake;
 
     @Before("controllerPointcut()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
 
-        // 增加日志流水号（使用时间戳代替 SnowFlake）
-        String logId = String.valueOf(System.currentTimeMillis());
-        MDC.put("LOG_ID", logId);
+        // 增加日志流水号
+        MDC.put("LOG_ID", String.valueOf(snowFlake.nextId()));
 
         // 开始打印请求日志
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        if (attributes == null) {
-            return; // 防止非 HTTP 请求调用导致空指针异常
-        }
         HttpServletRequest request = attributes.getRequest();
         Signature signature = joinPoint.getSignature();
         String name = signature.getName();
@@ -51,18 +60,17 @@ public class LogAspect {
         LOG.info("------------- 开始 -------------");
         LOG.info("请求地址: {} {}", request.getRequestURL().toString(), request.getMethod());
         LOG.info("类名方法: {}.{}", signature.getDeclaringTypeName(), name);
-        LOG.info("远程地址: {}", getRemoteIp(request));
-
-        // 将远程 IP 地址存储到 MDC 中（代替 RequestContext）
-        MDC.put("REMOTE_IP", getRemoteIp(request));
+        LOG.info("远程地址: {}", request.getRemoteAddr());
+        // get ip
+        RequestContext.setRemoteAddr(getRemoteIp(request));
 
         // 打印请求参数
         Object[] args = joinPoint.getArgs();
+        // LOG.info("请求参数: {}", JSONObject.toJSONString(args));
+
         Object[] arguments = new Object[args.length];
         for (int i = 0; i < args.length; i++) {
-            if (args[i] instanceof ServletRequest
-                    || args[i] instanceof ServletResponse
-                    || args[i] instanceof MultipartFile) {
+            if (args[i] instanceof ServletRequest || args[i] instanceof ServletResponse || args[i] instanceof MultipartFile) {
                 continue;
             }
             arguments[i] = args[i];
@@ -90,7 +98,8 @@ public class LogAspect {
     }
 
     /**
-     * 使用 Nginx 做反向代理，需要用该方法才能取到真实的远程 IP
+     * 使用nginx做反向代理，需要用该方法才能取到真实的远程IP
+     *
      * @param request
      * @return
      */
@@ -107,4 +116,5 @@ public class LogAspect {
         }
         return ip;
     }
+
 }

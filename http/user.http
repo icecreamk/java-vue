@@ -1,5 +1,6 @@
-GET http://localhost:8881/user/list
+GET http://localhost:8881/user/list?page=1&size=10
 Accept: application/json
+token: 562884406600142848
 
 ###
 

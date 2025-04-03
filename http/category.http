@@ -1,5 +1,7 @@
 
 GET http://localhost:8881/category/list?name=vue&size=2&page=1
+token: 562884406600142848
+
 ###
 
 GET http://localhost:8881/category/all

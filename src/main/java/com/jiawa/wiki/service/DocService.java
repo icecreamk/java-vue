@@ -5,17 +5,23 @@ import com.github.pagehelper.PageInfo;
 import com.jiawa.wiki.domain.Content;
 import com.jiawa.wiki.domain.Doc;
 import com.jiawa.wiki.domain.DocExample;
+import com.jiawa.wiki.exception.BusinessException;
+import com.jiawa.wiki.exception.BusinessExceptionCode;
 import com.jiawa.wiki.mapper.ContentMapper;
 import com.jiawa.wiki.mapper.DocMapper;
+import com.jiawa.wiki.mapper.DocMapperCust;
 import com.jiawa.wiki.req.DocQueryReq;
 import com.jiawa.wiki.req.DocSaveReq;
 import com.jiawa.wiki.resp.DocQueryResp;
 import com.jiawa.wiki.resp.PageResp;
 import com.jiawa.wiki.util.CopyUtil;
+import com.jiawa.wiki.util.RedisUtil;
+import com.jiawa.wiki.util.RequestContext;
 import com.jiawa.wiki.util.SnowFlake;
 import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
@@ -30,17 +36,17 @@ public class DocService {
     @Resource
     private DocMapper docMapper;
 
-    //    @Resource
-//    private DocMapperCust docMapperCust;
-//
+    @Resource
+    private DocMapperCust docMapperCust;
+    //
     @Resource
     private ContentMapper contentMapper;
 
     @Resource
     private SnowFlake snowFlake;
 
-//    @Resource
-//    public RedisUtil redisUtil;
+    @Resource
+    public RedisUtil redisUtil;
 //
 //    @Resource
 //    public WsService wsService;
@@ -131,7 +137,7 @@ public class DocService {
     public String findContent(Long id) {
         Content content = contentMapper.selectByPrimaryKey(id);
         // 文档阅读数+1
-//        docMapperCust.increaseViewCount(id);
+        docMapperCust.increaseViewCount(id);
         if (ObjectUtils.isEmpty(content)) {
             return "";
         } else {
@@ -142,24 +148,24 @@ public class DocService {
     /**
      * 点赞
      */
-//    public void vote(Long id) {
-//        // docMapperCust.increaseVoteCount(id);
-//        // 远程IP+doc.id作为key，24小时内不能重复
-//        String ip = RequestContext.getRemoteAddr();
-//        if (redisUtil.validateRepeat("DOC_VOTE_" + id + "_" + ip, 5000)) {
-//            docMapperCust.increaseVoteCount(id);
-//        } else {
-//            throw new BusinessException(BusinessExceptionCode.VOTE_REPEAT);
-//        }
-//
-//        // 推送消息
-//        Doc docDb = docMapper.selectByPrimaryKey(id);
-//        String logId = MDC.get("LOG_ID");
-//        wsService.sendInfo("【" + docDb.getName() + "】被点赞！", logId);
-//        // rocketMQTemplate.convertAndSend("VOTE_TOPIC", "【" + docDb.getName() + "】被点赞！");
-//    }
+    public void vote(Long id) {
+        docMapperCust.increaseVoteCount(id);
+        // 远程IP+doc.id作为key，24小时内不能重复
+        String ip = RequestContext.getRemoteAddr();
+        if (redisUtil.validateRepeat("DOC_VOTE_" + id + "_" + ip, 5000)) {
+            docMapperCust.increaseVoteCount(id);
+        } else {
+            throw new BusinessException(BusinessExceptionCode.VOTE_REPEAT);
+        }
 
-//    public void updateEbookInfo() {
-//        docMapperCust.updateEbookInfo();
-//    }
+        // 推送消息
+        Doc docDb = docMapper.selectByPrimaryKey(id);
+        String logId = MDC.get("LOG_ID");
+//        wsService.sendInfo("【" + docDb.getName() + "】被点赞！", logId);
+        // rocketMQTemplate.convertAndSend("VOTE_TOPIC", "【" + docDb.getName() + "】被点赞！");
+    }
+
+    public void updateEbookInfo() {
+        docMapperCust.updateEbookInfo();
+    }
 }
