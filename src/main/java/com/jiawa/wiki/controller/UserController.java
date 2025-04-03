@@ -1,5 +1,6 @@
 package com.jiawa.wiki.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.jiawa.wiki.req.UserLoginReq;
 import com.jiawa.wiki.req.UserQueryReq;
@@ -16,6 +17,7 @@ import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,6 +38,8 @@ public class UserController {
     @Resource
     private RedisTemplate redisTemplate;
 
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
 
 
     @GetMapping("/list")
@@ -84,10 +88,24 @@ public class UserController {
         return resp;
     }
 
+    @RequestMapping("/get/token/{key}")
+    public Object get(@PathVariable String key) {
+        Object object = redisTemplate.opsForValue().get(key);
+        LOG.info("key: {}, value: {}", key, object);
+
+        if (object == null) {
+            LOG.warn("token无效，请求被拦截");
+        } else {
+            LOG.info("key: {}, value: {}", object, JSON.parseObject((String) object, UserLoginResp.class));
+        }
+
+        return object;
+    }
+
     @GetMapping("/logout/{token}")
     public CommonResp logout(@PathVariable String token) {
         CommonResp resp = new CommonResp<>();
-//        redisTemplate.delete(token);
+        redisTemplate.delete(token);
         LOG.info("从redis中删除token: {}", token);
         return resp;
     }

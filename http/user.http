@@ -39,7 +39,8 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8881/redis/get/562560163618361344
+
+GET http://localhost:8881/user/get/token/562884406600142848
 Accept: application/json
 
 ###

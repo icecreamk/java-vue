@@ -28,7 +28,7 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8881/redis/get/1234
+GET http://localhost:8881/redis/get/562877287389859840
 Accept: application/json
 
 ###
