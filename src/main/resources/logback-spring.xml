@@ -1,77 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="true" scanPeriod="60 seconds">
+<configuration>
+    <!-- 修改一下路径-->
+    <property name="PATH" value="./log"></property>
 
-    <contextName>heeexy</contextName>
-
-    <!--定义日志文件的存储地址 -->
-    <property name="LOG_HOME" value="logs"/>
-
-    <!--定义日志的输出格式 -->
-    <property name="PATTERN"
-              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%X{traceId}][%X{username}] [%thread] %logger{30}:%line - %msg%n"/>
-
-    <!-- 彩色日志 -->
-    <!-- 彩色日志依赖的渲染类 -->
-    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
-    <conversionRule conversionWord="wex"
-                    converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
-    <conversionRule conversionWord="wEx"
-                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
-    <!-- 彩色日志格式 -->
-    <property name="CONSOLE_LOG_PATTERN"
-              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %yellow([%X{traceId}][%X{username}]) %highlight(%-5level) %magenta(%logger{30}:%-3L) - %m%n"/>
-
-    <!-- console日志格式 精简版 -->
-    <property name="CONSOLE_LOG_PATTERN_SIMPLE"
-              value="%d{HH:mm:ss.SSS} %highlight(%-5level) %magenta(%logger{20}:%-3L) - %m%n"/>
-
-    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
-        <!--此日志appender是为开发使用，只配置最底级别，控制台输出的日志级别是大于或等于此级别的日志信息-->
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>DEBUG</level>
-        </filter>
-        <!--encoder 默认配置为PatternLayoutEncoder-->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
-            <charset>utf-8</charset>
+<!--            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %blue(%-50logger{50}:%-4line) %thread %green(%-18X{LOG_ID}) %msg%n</Pattern>-->
+            <Pattern>%d{ss.SSS} %highlight(%-5level) %blue(%-30logger{30}:%-4line) %thread %green(%-18X{LOG_ID}) %msg%n</Pattern>
         </encoder>
     </appender>
 
-    <appender name="RollingFile"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>DEBUG</level>
-        </filter>
+    <appender name="TRACE_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${PATH}/trace.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}.log
-            </fileNamePattern>
-            <maxHistory>180</maxHistory>
-            <totalSizeCap>40GB</totalSizeCap>
+            <FileNamePattern>${PATH}/trace.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
-        <!-- 日志文件的格式 -->
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>${PATTERN}</pattern>
-            <charset>utf-8</charset>
-        </encoder>
+        <layout>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %-50logger{50}:%-4line %green(%-18X{LOG_ID}) %msg%n</pattern>
+        </layout>
     </appender>
 
-    <appender name="AsyncRollingFile" class="ch.qos.logback.classic.AsyncAppender">
-        <appender-ref ref="RollingFile"/>
-        <includeCallerData>true</includeCallerData>
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${PATH}/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${PATH}/error.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <layout>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %-50logger{50}:%-4line %green(%-18X{LOG_ID}) %msg%n</pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
     </appender>
 
-    <!-- 输出到控制台和文件，可定义更多的 Appender -->
-    <root level="INFO">
-        <appender-ref ref="Console"/>
-        <appender-ref ref="AsyncRollingFile"/>
+    <root level="ERROR">
+        <appender-ref ref="ERROR_FILE" />
     </root>
 
-    <!-- 下面配置一些第三方包的日志过滤级别，用于避免刷屏 -->
-    <logger name="org.mybatis" level="INFO"/>
-    <logger name="org.springframework" level="WARN"/>
-    <logger name="org.apache" level="WARN"/>
-    <logger name="com.heeexy.example" level="DEBUG"/>
-    <!--如果需要打印SQL,可以把下面的级别设置为DEBUG -->
-    <logger name="com.heeexy.example.dao" level="DEBUG"/>
+    <root level="TRACE">
+        <appender-ref ref="TRACE_FILE" />
+    </root>
 
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
 </configuration>

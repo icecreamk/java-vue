@@ -1,0 +1,45 @@
+GET http://localhost:8881/user/list
+Accept: application/json
+
+###
+
+POST http://localhost:8881/user/save
+Content-Type: application/json
+
+{
+  "loginName": "11",
+  "name": "22",
+  "password": "123aaaaaa"
+}
+
+###
+
+POST http://localhost:8881/user/reset-password
+Content-Type: application/json
+
+{
+  "id": 562560163618361344,
+  "loginName": "11",
+  "name": "22",
+  "password": "222111aaafds"
+}
+
+###
+
+POST http://localhost:8881/user/login
+Content-Type: application/json
+
+{
+  "loginName": "11",
+  "name": "22",
+  "password": "222111aaafds"
+}
+###
+
+
+###
+
+GET http://localhost:8881/redis/get/562560163618361344
+Accept: application/json
+
+###
