@@ -10,6 +10,11 @@ token: 562927127100526592
 
 ###
 
+GET http://localhost:8881/doc/vote/1
+token: 562927127100526592
+
+###
+
 POST http://localhost:8881/doc/save
 Content-Type: application/json
 
