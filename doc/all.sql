@@ -118,3 +118,18 @@ create table `user`
     unique key `login_name_unique` (`login_name`)
 ) engine = innodb
   default charset = utf8mb4 comment ='用户';
+
+drop table if exists `ebook_snapshot`;
+create table `ebook_snapshot`
+(
+    `id`            bigint not null comment 'ID',
+    `ebook_id`      bigint not null default 0 comment '电子书id',
+    `date`          date   not null comment '日期',
+    `view_count`    int             default 0 comment '阅读数',
+    `vote_count`    int             default 0 comment '点击数',
+    `view_increase` int             default 0 comment '阅读增长',
+    `vote_increase` int             default 0 comment '点击增长',
+    primary key (`id`),
+    unique key `ebook_id_date_unique` (`ebook_id`, `date`)
+) engine = innodb
+  default charset = utf8mb4 comment ='电子书快照表';
