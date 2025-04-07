@@ -1,36 +1,544 @@
-GET http://localhost:8881/demo/list
+GET http://localhost:8881/ebook-snapshot/get-statistic
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
-<> 2025-03-25T110200.200.json
+<> 2025-04-07T123805.200.json
 
 ###
 
-GET http://localhost:8881/demo/list
+GET http://localhost:8881/doc/vote/1
+token: 562927127100526592
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
-<> 2025-03-25T105651.200.json
+<> 2025-04-03T172500.200.json
 
 ###
 
-GET http://localhost:8881/demo/list
+GET http://localhost:8881/doc/vote/1
+token: 562927127100526592
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
-<> 2025-03-25T105650.200.json
+<> 2025-04-03T172455.200.json
 
 ###
 
-GET http://localhost:8881/demo/list
+POST http://localhost:8881/doc/save
+Content-Type: application/json
+Content-Length: 85
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
-<> 2025-03-25T105534.200.json
+{
+  "parent": 0,
+  "ebookId": 1,
+  "name": "222",
+  "content": "123",
+  "sort": 209
+}
+
+###
+
+GET http://localhost:8881/doc/vote/1
+token: 562927127100526592
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-04-03T172433.200.json
+
+###
+
+GET http://localhost:8881/doc/find-content/1
+token: 562927127100526592
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-04-03T171145.200.json
+
+###
+
+POST http://localhost:8881/user/login
+Content-Type: application/json
+Content-Length: 69
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "loginName": "11",
+  "name": "22",
+  "password": "222111aaafds"
+}
+
+<> 2025-04-03T171125.200.json
+
+###
+
+GET http://localhost:8881/category/list?size=2&page=1
+token: 562884406600142848
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-04-03T144038.200.json
+
+###
+
+GET http://localhost:8881/category/list?name=vue&size=2&page=1
+token: 562884406600142848
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-04-03T144026.200.json
+
+###
+
+GET http://localhost:8881/category/list?name=vue&size=2&page=1
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:8881/ebook/list?name=vue&size=2&page=1
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-04-03T144010.200.json
+
+###
+
+GET http://localhost:8881/ebook/list?name=vue&size=2&page=1
+token: 562884406600142848
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-04-03T144005.200.json
+
+###
+
+GET http://localhost:8881/user/list?page=1&size=10
+Accept: application/json
+token: 562884406600142848
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T143941.200.json
+
+###
+
+GET http://localhost:8881/user/list?page=1&size=10
+Accept: application/json
+token: 111
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+###
+
+GET http://localhost:8881/user/list?page=1&size=10
+Accept: application/json
+token: 562884406600142848
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T143928.200.json
+
+###
+
+GET http://localhost:8881/user/list?page=1&size=10
+Accept: application/json
+Authorization: 562884406600142848
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+###
+
+GET http://localhost:8881/doc/list?page=1&size=10
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:8881/hello
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+###
+
+GET http://localhost:8881/doc/list?page=1&size=10
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:8881/user/list
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+###
+
+GET http://localhost:8881/user/list
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+###
+
+GET http://localhost:8881/user/get/token/562884406600142848
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T142143.200.json
+
+###
+
+POST http://localhost:8881/user/login
+Content-Type: application/json
+Content-Length: 69
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "loginName": "11",
+  "name": "22",
+  "password": "222111aaafds"
+}
+
+<> 2025-04-03T142140.200.json
+
+###
+
+GET http://localhost:8881/user/get/token/562884127909613568
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+###
+
+GET http://localhost:8881/user/get/token/562884127909613568
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+###
+
+GET http://localhost:8881/user/get/token/562884127909613568
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+###
+
+POST http://localhost:8881/user/login
+Content-Type: application/json
+Content-Length: 69
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "loginName": "11",
+  "name": "22",
+  "password": "222111aaafds"
+}
+
+<> 2025-04-03T142034.200.json
+
+###
+
+GET http://localhost:8881/user/get/token/562883866394759168
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T141944.200.json
+
+###
+
+GET http://localhost:8881/user/get/token/562883866394759168
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T141939.200.json
+
+###
+
+POST http://localhost:8881/user/login
+Content-Type: application/json
+Content-Length: 69
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "loginName": "11",
+  "name": "22",
+  "password": "222111aaafds"
+}
+
+<> 2025-04-03T141931.200.json
+
+###
+
+POST http://localhost:8881/user/reset-password
+Content-Type: application/json
+Content-Length: 97
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "id": 562560163618361344,
+  "loginName": "11",
+  "name": "22",
+  "password": "222111aaafds"
+}
+
+<> 2025-04-03T141929.200.json
+
+###
+
+POST http://localhost:8881/user/login
+Content-Type: application/json
+Content-Length: 69
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "loginName": "11",
+  "name": "22",
+  "password": "222111aaafds"
+}
+
+<> 2025-04-03T141447.200.json
+
+###
+
+POST http://localhost:8881/user/login
+Content-Type: application/json
+Content-Length: 69
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "loginName": "11",
+  "name": "22",
+  "password": "222111aaafds"
+}
+
+<> 2025-04-03T141432.200.json
+
+###
+
+GET http://localhost:8881/redis/get/562881112934846464
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T140852.200.json
+
+###
+
+GET http://localhost:8881/redis/get/123
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T140847.200.json
+
+###
+
+GET http://localhost:8881/redis/get/562881112934846464
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T140840.200.json
+
+###
+
+POST http://localhost:8881/user/login
+Content-Type: application/json
+Content-Length: 69
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "loginName": "11",
+  "name": "22",
+  "password": "222111aaafds"
+}
+
+<> 2025-04-03T140835.200.json
+
+###
+
+GET http://localhost:8881/redis/get/562880646129782784
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T140647.200.json
+
+###
+
+POST http://localhost:8881/user/login
+Content-Type: application/json
+Content-Length: 69
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "loginName": "11",
+  "name": "22",
+  "password": "222111aaafds"
+}
+
+<> 2025-04-03T140643.200.json
+
+###
+
+GET http://localhost:8881/redis/get/562880107014918144
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T140445.200.json
+
+###
+
+POST http://localhost:8881/user/login
+Content-Type: application/json
+Content-Length: 69
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "loginName": "11",
+  "name": "22",
+  "password": "222111aaafds"
+}
+
+<> 2025-04-03T140435.200.json
+
+###
+
+GET http://localhost:8881/redis/set/111/test111
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T140427.200.json
+
+###
+
+GET http://localhost:8881/redis/get/562877287389859840
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T140419.200.json
+
+###
+
+GET http://localhost:8881/redis/get/562877287389859840
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T140415.200.json
+
+###
+
+GET http://localhost:8881/redis/get/562877287389859840
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T140409.200.json
+
+###
+
+GET http://localhost:8881/redis/get/562560163618361344
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T140344.200.json
+
+###
+
+POST http://localhost:8881/user/login
+Content-Type: application/json
+Content-Length: 69
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "loginName": "11",
+  "name": "22",
+  "password": "222111aaafds"
+}
+
+<> 2025-04-03T140340.200.json
+
+###
+
+GET http://localhost:8881/redis/get/562877287389859840
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T140325.200.json
+
+###
+
+POST http://localhost:8881/user/login
+Content-Type: application/json
+Content-Length: 69
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "loginName": "11",
+  "name": "22",
+  "password": "222111aaafds"
+}
+
+<> 2025-04-03T140324.200.json
+
+###
+
+GET http://localhost:8881/redis/get/562877287389859840
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-04-03T140320.200.json
 
 ###
 
